@@ -1,0 +1,42 @@
+h1,
+.font-h1 {
+  @include font-h1;
+}
+
+h2,
+.font-h2 {
+  @include font-h2;
+}
+
+h3,
+.font-h3 {
+  @include font-h3;
+}
+
+h4,
+.font-h4 {
+  @include font-h4;
+}
+
+h5,
+.font-h5 {
+  @include font-h5;
+}
+
+h6,
+.font-h6 {
+  @include font-h6;
+}
+
+/* Text colors */
+.highlight {
+  color: $color-theme;
+}
+
+.text-primary {
+  color: $color-text;
+}
+
+.text-sub {
+  color: $color-text-sub;
+}

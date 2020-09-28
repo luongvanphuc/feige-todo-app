@@ -1,0 +1,192 @@
+$size-list: (xxs, xs, sm, md, lg, xl);
+$size-num: ($size-xxs, $size-xs, $size-sm, $size-md, $size-lg, $size-xl);
+
+@for $i from 1 through length($size-list) {
+  .p-#{nth($size-list, $i)} {
+    padding: nth($size-num, $i);
+  }
+
+  .p-l-#{nth($size-list, $i)} {
+    padding-left: nth($size-num, $i);
+  }
+
+  .p-r-#{nth($size-list, $i)} {
+    padding-right: nth($size-num, $i);
+  }
+
+  .p-lr-#{nth($size-list, $i)} {
+    padding-left: nth($size-num, $i);
+    padding-right: nth($size-num, $i);
+  }
+
+  .p-t-#{nth($size-list, $i)} {
+    padding-top: nth($size-num, $i);
+  }
+
+  .p-b-#{nth($size-list, $i)} {
+    padding-bottom: nth($size-num, $i);
+  }
+
+  .p-tb-#{nth($size-list, $i)} {
+    padding-top: nth($size-num, $i);
+    padding-bottom: nth($size-num, $i);
+  }
+
+  .m-#{nth($size-list, $i)} {
+    margin: nth($size-num, $i);
+  }
+
+  .m-l-#{nth($size-list, $i)} {
+    margin-left: nth($size-num, $i);
+  }
+
+  .m-r-#{nth($size-list, $i)} {
+    margin-right: nth($size-num, $i);
+  }
+
+  .m-lr-#{nth($size-list, $i)} {
+    margin-left: nth($size-num, $i);
+    margin-right: nth($size-num, $i);
+  }
+
+  .m-t-#{nth($size-list, $i)} {
+    margin-top: nth($size-num, $i);
+  }
+
+  .m-b-#{nth($size-list, $i)} {
+    margin-bottom: nth($size-num, $i);
+  }
+
+  .m-tb-#{nth($size-list, $i)} {
+    margin-top: nth($size-num, $i);
+    margin-bottom: nth($size-num, $i);
+  }
+}
+
+@for $i from 1 through length($size-list) {
+  @media only screen and (max-width: $mq-tablet-max) {
+    .#{$tablet-prefix}-p-#{nth($size-list, $i)} {
+      padding: nth($size-num, $i);
+    }
+
+    .#{$tablet-prefix}-p-l-#{nth($size-list, $i)} {
+      padding-left: nth($size-num, $i);
+    }
+
+    .#{$tablet-prefix}-p-r-#{nth($size-list, $i)} {
+      padding-right: nth($size-num, $i);
+    }
+
+    .#{$tablet-prefix}-p-lr-#{nth($size-list, $i)} {
+      padding-left: nth($size-num, $i);
+      padding-right: nth($size-num, $i);
+    }
+
+    .#{$tablet-prefix}-p-t-#{nth($size-list, $i)} {
+      padding-top: nth($size-num, $i);
+    }
+
+    .#{$tablet-prefix}-p-b-#{nth($size-list, $i)} {
+      padding-bottom: nth($size-num, $i);
+    }
+
+    .#{$tablet-prefix}-p-tb-#{nth($size-list, $i)} {
+      padding-top: nth($size-num, $i);
+      padding-bottom: nth($size-num, $i);
+    }
+
+    .#{$tablet-prefix}-m-#{nth($size-list, $i)} {
+      margin: nth($size-num, $i);
+    }
+
+    .#{$tablet-prefix}-m-l-#{nth($size-list, $i)} {
+      margin-left: nth($size-num, $i);
+    }
+
+    .#{$tablet-prefix}-m-r-#{nth($size-list, $i)} {
+      margin-right: nth($size-num, $i);
+    }
+
+    .#{$tablet-prefix}-m-lr-#{nth($size-list, $i)} {
+      margin-left: nth($size-num, $i);
+      margin-right: nth($size-num, $i);
+    }
+
+    .#{$tablet-prefix}-m-t-#{nth($size-list, $i)} {
+      margin-top: nth($size-num, $i);
+    }
+
+    .#{$tablet-prefix}-m-b-#{nth($size-list, $i)} {
+      margin-bottom: nth($size-num, $i);
+    }
+
+    .#{$tablet-prefix}-m-tb-#{nth($size-list, $i)} {
+      margin-top: nth($size-num, $i);
+      margin-bottom: nth($size-num, $i);
+    }
+  }
+}
+
+@for $i from 1 through length($size-list) {
+  @media only screen and (max-width: $mq-mobile-max) {
+    .#{$mobile-prefix}-p-#{nth($size-list, $i)} {
+      padding: nth($size-num, $i);
+    }
+
+    .#{$mobile-prefix}-p-l-#{nth($size-list, $i)} {
+      padding-left: nth($size-num, $i);
+    }
+
+    .#{$mobile-prefix}-p-r-#{nth($size-list, $i)} {
+      padding-right: nth($size-num, $i);
+    }
+
+    .#{$mobile-prefix}-p-lr-#{nth($size-list, $i)} {
+      padding-left: nth($size-num, $i);
+      padding-right: nth($size-num, $i);
+    }
+
+    .#{$mobile-prefix}-p-t-#{nth($size-list, $i)} {
+      padding-top: nth($size-num, $i);
+    }
+
+    .#{$mobile-prefix}-p-b-#{nth($size-list, $i)} {
+      padding-bottom: nth($size-num, $i);
+    }
+
+    .#{$mobile-prefix}-p-tb-#{nth($size-list, $i)} {
+      padding-top: nth($size-num, $i);
+      padding-bottom: nth($size-num, $i);
+    }
+
+    .#{$mobile-prefix}-m-#{nth($size-list, $i)} {
+      margin: nth($size-num, $i);
+    }
+
+    .#{$mobile-prefix}-m-l-#{nth($size-list, $i)} {
+      margin-left: nth($size-num, $i);
+    }
+
+    .#{$mobile-prefix}-m-r-#{nth($size-list, $i)} {
+      margin-right: nth($size-num, $i);
+    }
+
+    .#{$mobile-prefix}-m-lr-#{nth($size-list, $i)} {
+      margin-left: nth($size-num, $i);
+      margin-right: nth($size-num, $i);
+    }
+
+    .#{$mobile-prefix}-m-t-#{nth($size-list, $i)} {
+      margin-top: nth($size-num, $i);
+    }
+
+    .#{$mobile-prefix}-m-b-#{nth($size-list, $i)} {
+      margin-bottom: nth($size-num, $i);
+    }
+
+    .#{$mobile-prefix}-m-tb-#{nth($size-list, $i)} {
+      margin-top: nth($size-num, $i);
+      margin-bottom: nth($size-num, $i);
+    }
+  }
+}

@@ -1,0 +1,166 @@
+$btn-default-fixed-width: 150px;
+$btn-default-padding: 10px;
+$btn-default-font-size: 15px;
+$btn-default-line-height: 22px;
+
+$btn-sm-fixed-width: 123px;
+$btn-sm-padding: 8px;
+$btn-sm-font-size: 13px;
+$btn-sm-line-height: 18px;
+
+$btn-side-padding: 30px;
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  color: #ffffff;
+  background-color: $color-theme;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  transition: $transition-common;
+  user-select: none;
+  cursor: pointer;
+
+  // default button
+  padding: $btn-default-padding $btn-side-padding;
+  font-size: $btn-default-font-size;
+  line-height: $btn-default-line-height;
+
+  &:hover {
+    background-color: lighten($color-theme, 5%);
+  }
+
+  &.btn--fixed {
+    width: $btn-default-fixed-width;
+  }
+
+  // small button
+  &--sm {
+    padding: $btn-sm-padding $btn-side-padding;
+    font-size: $btn-sm-font-size;
+    line-height: $btn-sm-line-height;
+
+    &.btn--fixed {
+      width: $btn-sm-fixed-width;
+    }
+  }
+
+  &--secondary {
+    color: $color-text;
+    background-color: $color-border;
+    border-color: $color-border;
+
+    &:hover {
+      background-color: lighten($color-border, 5%);
+      border-color: lighten($color-border, 5%);
+    }
+  }
+
+  // buttons with 1px border and white background
+  &--box {
+    color: $color-theme;
+    border-color: $color-theme;
+    background-color: #ffffff;
+
+    &:hover {
+      color: lighten($color-theme, 5%);
+      border-color: lighten($color-theme, 5%);
+      background-color: #ffffff;
+    }
+
+    &.btn--secondary {
+      color: $color-text;
+      border-color: $color-border;
+    }
+
+    &.btn--secondary:hover {
+      color: lighten($color-text, 5%);
+      border-color: lighten($color-border, 5%);
+    }
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+.btn-loading {
+  position: relative;
+
+  &::after {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url("/assets/images/icons/ico-spinner-white.svg") no-repeat right/contain;
+    animation: spin 2s infinite linear;
+    position: absolute;
+  }
+}
+
+.btn-icon {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  padding: 4px;
+  color: $color-text;
+  background-color: #ffffff;
+  text-align: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: $transition-common;
+
+  &:hover {
+    color: $color-text;
+    background-color: $color-background-gray-light;
+  }
+
+  &.transparent {
+    background-color: transparent;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+}
+
+.btn-select {
+  display: inline-block;
+  max-width: 100%;
+  margin: 0 12px 12px 0;
+  padding: 6px 15px;
+  font-size: 13px;
+  color: $color-text;
+  background-color: $color-bg-select;
+  border: 1px solid $color-border;
+  border-radius: 100px;
+  transition: $transition-common;
+  user-select: none;
+  cursor: pointer;
+
+  &.active {
+    border-color: $color-theme;
+    background-color: $color-background-theme;
+  }
+
+  &.readonly {
+    cursor: default;
+  }
+}
+
+.btn-mobi-fixed-bottom {
+  @include tablet-down {
+    $w: 300px;
+
+    position: fixed;
+    bottom: 10px;
+    width: $w;
+    left: 50%;
+    margin-left: -$w/2;
+  }
+}
