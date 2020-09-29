@@ -1,9 +1,12 @@
-<div class="flexbox">
-  <label class="flex-start-between checkbox m-none">
+<div class="flex-center-between">
+  <label class="checkbox m-none">
     <input type="checkbox" name="complete" [(ngModel)]="data.complete" (ngModelChange)="updateComplete()">
     <span class="text" [class.complete]="data.complete">
       <strong>{{ data.title }}</strong><br>
       <span class="duedate font-h5">{{ data.dueDate }}</span>
     </span>
   </label>
+  <a class="btn-delete">
+    <img src="/assets/images/icons/trashbin.svg" width="18px">
+  </a>
 </div>
