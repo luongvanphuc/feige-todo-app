@@ -55,3 +55,17 @@
     opacity: 0.6;
   }
 }
+
+.btn-loading {
+  position: relative;
+
+  &::after {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url("/assets/images/icons/spinner-white.svg") no-repeat right/contain;
+    animation: spin 2s infinite linear;
+    position: absolute;
+  }
+}

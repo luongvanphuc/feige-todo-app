@@ -3,25 +3,27 @@
     <div class="add-body">
       <label class="form-label required">
         Title <i class="asterisk"></i>
-        <input class="form-input" type="text" name="title" [(ngModel)]="model.title" required>
+        <input class="form-input" type="text" name="title" [(ngModel)]="model.title" required maxlength="100">
       </label>
 
       <label class="form-label">
-        Content (optional)
-        <textarea class="form-input" rows="3" name="content" [(ngModel)]="model.content"></textarea>
+        <div class="flex-center-between">
+          <span>Content (optional)</span>
+          <span class="font-h5 text-sub">{{ model.content?.length }}/255</span>
+        </div>
+        <textarea class="form-input" rows="4" name="content" [(ngModel)]="model.content" maxlength="255"></textarea>
       </label>
     </div>
     <div class="flex-center">
       <button class="btn btn--secondary btn--fixed m-r-sm"
         type="button"
         (click)="closeModal()"
-        [disabled]="submiting"
       >
         Cancel
       </button>
       <button class="btn btn--fixed"
         type="submit"
-        [disabled]="submiting"
+        [appButton]="submiting"
       >
         Add
       </button>

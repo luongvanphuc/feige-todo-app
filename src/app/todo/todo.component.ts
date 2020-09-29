@@ -9,7 +9,7 @@ import { Todo, TodoService } from './shared/services/todo';
   styleUrls: ['./todo.component.scss']
 })
 export class TodoComponent implements OnInit {
-  todos: Array<Todo>;
+  todos: Array<Todo> = [];
 
   constructor(
     private todoService: TodoService,
@@ -23,6 +23,8 @@ export class TodoComponent implements OnInit {
   }
 
   openAddModal() {
-    this.modalService.open(AddModalComponent);
+    this.modalService.open(AddModalComponent).result.then((addedTodo) => {
+      this.todos.push(addedTodo);
+    });
   }
 }

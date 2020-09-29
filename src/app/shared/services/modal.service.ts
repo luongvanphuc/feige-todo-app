@@ -15,6 +15,7 @@ interface ModalData {
   childComponentRef: ComponentRef<any>;
   backdropElement: HTMLElement;
   containerElement: HTMLElement;
+  resolver: (_: any) => any; // promise resolve method
 }
 
 interface ModalConfig {
@@ -61,27 +62,38 @@ export class ModalService {
     this.renderer2 = this.rendererFactory.createRenderer(null, null);
   }
 
-  open(component: any, modalConfigs?: ModalConfig, componentData?: any): { componentInstance: any } {
+  open(component: any, modalConfigs?: ModalConfig, componentData?: any): {
+    componentInstance: any,
+    result: Promise<any>,
+  } {
     const [backdrop, container, content] = this.attachModalContainers(modalConfigs);
     const componentRef = this.appendComponentTo(content, component, componentData);
 
     // set body overflow: hidden in css to prevent scroll
     this.renderer2.addClass(this.document.body, this.modalOpenClass);
 
+    // create a result resolver
+    let resultResolver: () => any;
+    const resultPromise = new Promise((res) => {
+      resultResolver = res;
+    });
+
     // store for destroying later
     this.modalDatas.push({
       childComponentRef: componentRef,
       containerElement: container,
       backdropElement: backdrop,
+      resolver: resultResolver,
     });
     this.activeModalData = this.modalDatas[this.modalDatas.length - 1];
 
     return {
       componentInstance: componentRef.instance,
+      result: resultPromise,
     };
   }
 
-  close(): void {
+  close(resolvedData?: any): void {
     if (!this.activeModalData) {
       return;
     }
@@ -94,6 +106,9 @@ export class ModalService {
 
     // remove the body class
     this.renderer2.removeClass(this.document.body, this.modalOpenClass);
+
+    // resolve the data if any
+    this.activeModalData.resolver(resolvedData);
 
     // remove and replace the active modal data
     this.modalDatas.pop();

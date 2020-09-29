@@ -13,6 +13,7 @@
   padding: $size-xs $size-sm;
   border: 1px solid #d9e0f0;
   resize: none;
+  transition: border 0.2s ease;
 
   &[required] {
     box-shadow: none; // prevent firefox auto put box shadow for required fields

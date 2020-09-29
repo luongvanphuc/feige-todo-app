@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { NgForm } from '@angular/forms';
+
 import { ModalService } from '@shared/services';
-import { Todo } from '../../services/todo';
+import { Todo, TodoService } from '../../services/todo';
+import { validateFormControls } from '@shared/helpers/forms';
 
 @Component({
   selector: 'app-add-modal',
@@ -20,11 +22,20 @@ export class AddModalComponent {
 
   constructor(
     private modalService: ModalService,
-    private httpClient: HttpClient,
+    private todoService: TodoService,
   ) { }
 
-  submit(form) {
+  submit(form: NgForm) {
+    // validate the for if the required fields are missing
+    if (form.invalid) {
+      validateFormControls(form);
+      return;
+    }
 
+    this.submiting = true;
+    this.todoService.create(this.model).subscribe((addedTodo) => {
+      this.modalService.close(addedTodo);
+    });
   }
 
   closeModal() {

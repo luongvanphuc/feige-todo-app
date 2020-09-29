@@ -1,10 +1,10 @@
 import { Directive, Input, OnChanges, Renderer2, ElementRef, SimpleChanges, HostBinding } from '@angular/core';
 
 @Directive({
-  selector: 'button[njButton]',
+  selector: 'button[appButton]',
 })
 export class ButtonDirective implements OnChanges {
-  @Input('njButton') isLoading: boolean;
+  @Input('appButton') isLoading: boolean;
   @Input() autoRelease = true;
   @Input() submittedText = 'Submitted'; // only if autoRelease = false
 
