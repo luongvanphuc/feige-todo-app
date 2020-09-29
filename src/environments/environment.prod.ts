@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  API_ENDPOINT: 'https://feige-json-server.herokuapp.com',
 };

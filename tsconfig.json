@@ -14,9 +14,15 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@app-constant": [
+        "src/app/app.constant"
+      ],
+    }
   },
   "angularCompilerOptions": {
+    "preserveWhitespaces": false,
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true
   }
