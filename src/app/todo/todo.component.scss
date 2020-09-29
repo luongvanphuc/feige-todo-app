@@ -1,6 +1,26 @@
+@import 'settings/index';
+
+:host {
+  --side-pad: 25px;
+}
+
 .container {
   max-width: 450px;
   margin: 60px auto;
   box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
+  overflow: hidden;
+}
+
+.today-widget {
+  padding: 25px var(--side-pad);
+  border-bottom: 1px solid $color-border;
+}
+
+.todo-list {
+  min-height: 150px;
+}
+
+.todo-item {
+  padding: 5px var(--side-pad);
 }

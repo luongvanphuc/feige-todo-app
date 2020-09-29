@@ -1,6 +1,15 @@
 <div class="container">
-  <app-today-widget></app-today-widget>
-  <a *ngFor="let todo of todos">
-    {{ todo.title }}
-  </a>
+  <!-- Header -->
+  <app-today-widget class="today-widget"
+    [taskCount]="todos?.length"
+  ></app-today-widget>
+
+  <!-- Todo list -->
+  <div class="todo-list">
+    <app-todo-item class="todo-item"
+      *ngFor="let todo of todos"
+      [data]="todo"
+    >
+    </app-todo-item>
+  </div>
 </div>

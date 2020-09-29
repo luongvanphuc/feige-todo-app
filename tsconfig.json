@@ -19,6 +19,9 @@
       "@app-constant": [
         "src/app/app.constant"
       ],
+      "@shared/*": [
+        "src/app/shared/*"
+      ],
     }
   },
   "angularCompilerOptions": {

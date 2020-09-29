@@ -1,1 +1,10 @@
-<p>today-widget works!</p>
+<div class="flex-center-between m-b-xxs">
+  <span class="date highlight">
+    <strong>{{ dayLabel }}</strong>, {{ date }}
+  </span>
+  <span class="text-sub font-h4">
+    <strong>{{ taskCount }}</strong>
+    {{ taskCount | pluralize: 'task' }}
+  </span>
+</div>
+<span class="text-sub">{{ monthLabel }}</span>
