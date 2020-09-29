@@ -1,8 +1,6 @@
 <div class="container">
   <!-- Header -->
-  <app-today-widget class="today-widget"
-    [taskCount]="todos?.length"
-  ></app-today-widget>
+  <app-today-widget class="today-widget"></app-today-widget>
 
   <!-- Todo list -->
   <div class="todo-list pos-r p-t-lg">
@@ -16,6 +14,9 @@
         (deleted)="removeItem(todo)"
       ></app-todo-item>
     </ng-container>
+
+    <!-- Loading spinner -->
+    <div [njAsyncLoadingDiv]="isLoadingData"></div>
 
     <!-- Empty case -->
     <button class="btn btn-empty-add" (click)="openAddModal()" *ngIf="todos?.length === 0">+ Add New</button>

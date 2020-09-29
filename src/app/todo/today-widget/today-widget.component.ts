@@ -5,11 +5,9 @@ import { getDayLabel, getMonthLabel } from '@shared/helpers/datetime';
 @Component({
   selector: 'app-today-widget',
   templateUrl: './today-widget.component.html',
-  styleUrls: ['./today-widget.component.scss']
+  styleUrls: ['./today-widget.component.scss'],
 })
 export class TodayWidgetComponent implements OnInit {
-  @Input() taskCount = 0;
-
   dayLabel: string;
   monthLabel: string;
   date: number;
