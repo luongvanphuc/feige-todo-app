@@ -12,6 +12,7 @@
     <app-todo-item class="todo-item"
       *ngFor="let todo of todos"
       [data]="todo"
+      (deleted)="removeItem(todo)"
     >
     </app-todo-item>
   </div>

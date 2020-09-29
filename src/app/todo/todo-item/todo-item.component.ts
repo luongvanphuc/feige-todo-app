@@ -1,4 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ModalService } from '@shared/services';
+import { DeleteModalComponent } from '../shared/components/delete-modal';
 import { Todo, TodoService } from '../shared/services/todo';
 
 @Component({
@@ -9,11 +11,21 @@ import { Todo, TodoService } from '../shared/services/todo';
 export class TodoItemComponent {
 
   @Input() data: Todo;
+  @Output() deleted = new EventEmitter<void>();
 
-  constructor(private todoService: TodoService) { }
+  constructor(
+    private modalService: ModalService,
+    private todoService: TodoService,
+  ) { }
 
   updateComplete() {
     this.todoService.update(this.data).subscribe();
+  }
+
+  openDeleteModal() {
+    this.modalService.open(DeleteModalComponent, null, { id: this.data.id }).result.then(() => {
+      this.deleted.emit();
+    });
   }
 
 }

@@ -5,7 +5,8 @@ import { TodoComponent } from './todo.component';
 import { TodayWidgetComponent } from './today-widget/today-widget.component';
 import { TodoItemComponent } from './todo-item/todo-item.component';
 import { TodoService } from './shared/services/todo/todo.service';
-import { AddModalComponent } from './shared/components/add-modal/add-modal.component';
+import { AddEditModalComponent } from './shared/components/add-edit-modal/add-edit-modal.component';
+import { DeleteModalComponent } from './shared/components/delete-modal';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { AddModalComponent } from './shared/components/add-modal/add-modal.compo
     TodoComponent,
     TodayWidgetComponent,
     TodoItemComponent,
-    AddModalComponent,
+    AddEditModalComponent,
+    DeleteModalComponent,
   ],
   providers: [
     TodoService,

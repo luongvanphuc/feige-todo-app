@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalService } from '@shared/services';
-import { AddModalComponent } from './shared/components/add-modal';
+import { AddEditModalComponent } from './shared/components/add-edit-modal';
 import { Todo, TodoService } from './shared/services/todo';
 
 @Component({
@@ -23,10 +23,17 @@ export class TodoComponent implements OnInit {
   }
 
   openAddModal() {
-    this.modalService.open(AddModalComponent).result.then((addedTodo) => {
+    this.modalService.open(AddEditModalComponent).result.then((addedTodo) => {
       if (addedTodo) {
         this.todos.unshift(addedTodo);
       }
     });
+  }
+
+  removeItem(todo: Todo) {
+    const index = this.todos.indexOf(todo);
+    if (index !== -1) {
+      this.todos.splice(index, 1);
+    }
   }
 }

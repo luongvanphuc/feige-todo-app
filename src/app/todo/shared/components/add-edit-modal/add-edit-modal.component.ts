@@ -7,11 +7,11 @@ import { validateFormControls } from '@shared/helpers/forms';
 import { getYYYYMMDD } from '@shared/helpers/datetime';
 
 @Component({
-  selector: 'app-add-modal',
-  templateUrl: './add-modal.component.html',
-  styleUrls: ['./add-modal.component.scss'],
+  selector: 'app-add-edit-modal',
+  templateUrl: './add-edit-modal.component.html',
+  styleUrls: ['./add-edit-modal.component.scss'],
 })
-export class AddModalComponent implements OnInit {
+export class AddEditModalComponent implements OnInit {
 
   model: Todo = {
     title: '',

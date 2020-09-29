@@ -5,24 +5,9 @@
   width: 500px;
 }
 
-.alert-body {
+.delete-body {
   max-width: 360px;
   min-height: 70px;
   margin: 0 auto $size-xl;
   text-align: center;
-}
-
-.title {
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: $size-xs;
-}
-
-.text {
-  line-height: 20px;
-}
-
-.btn {
-  min-width: 150px;
-  height: 40px;
 }

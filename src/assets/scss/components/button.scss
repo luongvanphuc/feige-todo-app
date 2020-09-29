@@ -34,6 +34,15 @@
     }
   }
 
+  &--danger {
+    color: #ffffff;
+    background-color: $color-danger;
+
+    &:hover {
+      background-color: lighten($color-danger, 5%);
+    }
+  }
+
   &--icon {
     width: 40px;
     height: 40px;
