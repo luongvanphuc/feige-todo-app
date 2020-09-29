@@ -11,24 +11,7 @@
   margin: 0 auto $size-xl;
 }
 
-.label {
-  display: block;
-  margin-bottom: 20px;
-  font-weight: 600;
-}
 
-.input {
-  display: block;
-  width: 100%;
-  min-height: 35px;
-  margin: 7px 0 0 0;
-  padding: $size-xs $size-sm;
-  border: 1px solid #d9e0f0;
-
-  &.invalid {
-    border-color: $color-red;
-  }
-}
 
 // .btn {
 //   width: 150px;

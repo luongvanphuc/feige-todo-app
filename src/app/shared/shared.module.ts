@@ -4,10 +4,12 @@ import { Pipes } from './pipes';
 import { Services } from './services';
 import { Components } from './components';
 import { Directives } from './directives';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
   ],
   declarations: [
     ...Components,
@@ -19,6 +21,7 @@ import { Directives } from './directives';
   ],
   exports: [
     CommonModule,
+    FormsModule,
     ...Components,
     ...Pipes,
     ...Directives,

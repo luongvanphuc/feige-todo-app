@@ -1,0 +1,36 @@
+.form-label {
+  display: block;
+  margin-bottom: 20px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.form-input {
+  display: block;
+  width: 100%;
+  min-height: 35px;
+  margin: 7px 0 0 0;
+  padding: $size-xs $size-sm;
+  border: 1px solid #d9e0f0;
+  resize: none;
+
+  &[required] {
+    box-shadow: none; // prevent firefox auto put box shadow for required fields
+  }
+
+  &.ng-invalid.ng-touched {
+    border-color: $color-red;
+  }
+}
+
+.asterisk {
+  display: inline;
+  font-style: normal;
+  font-size: 11px;
+  vertical-align: text-top;
+  color: $color-red;
+
+  &::after {
+    content: ' *';
+  }
+}

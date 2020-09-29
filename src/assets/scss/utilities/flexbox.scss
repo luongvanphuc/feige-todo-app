@@ -2,6 +2,10 @@
   display: flex;
 }
 
+.flex-center {
+  @include flex-center;
+}
+
 .flex-center-between {
   @include flex-center-between;
 }
@@ -20,10 +24,6 @@
 
 // .flex-auto {
 //   @include flex-auto;
-// }
-
-// .flex-center {
-//   @include flex-center;
 // }
 
 // .flex-center-around {

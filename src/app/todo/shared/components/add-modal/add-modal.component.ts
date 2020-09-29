@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ModalService } from '@shared/services';
+import { Todo } from '../../services/todo';
 
 @Component({
   selector: 'app-add-modal',
@@ -9,23 +10,20 @@ import { ModalService } from '@shared/services';
 })
 export class AddModalComponent {
 
-  formError = false;
+  model: Todo = {
+    title: '',
+    content: '',
+    dueDate: new Date(),
+  };
+
   submiting = false;
-  error = false;
 
   constructor(
     private modalService: ModalService,
     private httpClient: HttpClient,
   ) { }
 
-  submit(name: string, email: string, feedback: string) {
-    // I were trying to use native solution instead of importing angular's FormsModule
-    this.formError = !feedback;
-    this.error = false;
-
-    if (this.formError) {
-      return;
-    }
+  submit(form) {
 
   }
 

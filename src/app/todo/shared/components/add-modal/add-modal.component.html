@@ -1,22 +1,30 @@
 <div class="modal-body">
-  <div class="add-body">
-    <label class="label">
-      Name (optional)
-      <input class="input" type="text" #name>
-    </label>
+  <form (ngSubmit)="submit(form)" #form="ngForm">
+    <div class="add-body">
+      <label class="form-label required">
+        Title <i class="asterisk"></i>
+        <input class="form-input" type="text" name="title" [(ngModel)]="model.title" required>
+      </label>
 
-    <label class="label">
-      Email (optional)
-      <input class="input" type="text" #email>
-    </label>
-
-    <label class="label">
-      Feedback
-      <textarea class="input" [class.invalid]="formError" rows="3" #feedback></textarea>
-    </label>
-  </div>
-  <div class="flex-center">
-    <button type="button" class="btn btn--secondary" (click)="submit(name.value, email.value, feedback.value)" [disabled]="submiting">Submit</button>
-    <button type="button" class="btn" (click)="submit(name.value, email.value, feedback.value)" [disabled]="submiting">Add</button>
-  </div>
+      <label class="form-label">
+        Content (optional)
+        <textarea class="form-input" rows="3" name="content" [(ngModel)]="model.content"></textarea>
+      </label>
+    </div>
+    <div class="flex-center">
+      <button class="btn btn--secondary btn--fixed m-r-sm"
+        type="button"
+        (click)="closeModal()"
+        [disabled]="submiting"
+      >
+        Cancel
+      </button>
+      <button class="btn btn--fixed"
+        type="submit"
+        [disabled]="submiting"
+      >
+        Add
+      </button>
+    </div>
+  </form>
 </div>
