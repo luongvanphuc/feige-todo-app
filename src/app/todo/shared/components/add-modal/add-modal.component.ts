@@ -15,8 +15,8 @@ export class AddModalComponent implements OnInit {
 
   model: Todo = {
     title: '',
-    content: '',
     dueDate: null,
+    complete: false,
   };
 
   minDueDate: string;

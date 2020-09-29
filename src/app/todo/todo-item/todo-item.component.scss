@@ -1,1 +1,16 @@
+@import 'settings/index';
+
 :host { display: block; }
+
+.complete {
+  text-decoration: line-through;
+  color: $color-gray-4;
+}
+
+.duedate {
+  color: $color-text-sub;
+
+  .complete & {
+    color: $color-gray-4;
+  }
+}

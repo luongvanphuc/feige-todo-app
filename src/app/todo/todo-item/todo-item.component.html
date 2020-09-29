@@ -1,1 +1,9 @@
-{{ data.title }}
+<div class="flexbox">
+  <label class="flex-start-between checkbox m-none">
+    <input type="checkbox" name="complete" [(ngModel)]="data.complete">
+    <span class="text" [class.complete]="data.complete">
+      <strong>{{ data.title }}</strong><br>
+      <span class="duedate font-h5">{{ data.dueDate }}</span>
+    </span>
+  </label>
+</div>

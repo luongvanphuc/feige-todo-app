@@ -10,6 +10,10 @@
   @include flex-center-between;
 }
 
+.flex-auto {
+  @include flex-auto;
+}
+
 // .flex-wrap {
 //   flex-wrap: wrap;
 // }
@@ -20,10 +24,6 @@
 
 // .flex-direction-column {
 //   flex-direction: column;
-// }
-
-// .flex-auto {
-//   @include flex-auto;
 // }
 
 // .flex-center-around {
