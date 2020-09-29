@@ -1,0 +1,67 @@
+/* stylelint-disable */
+
+// Kill the scroll on the body
+// .modal-open {
+//   @include tablet-down {
+//     overflow: hidden;
+//   }
+// }
+
+// Container that the modal scrolls within
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: calc(100vh - 80px);
+  margin: 40px 0;
+  z-index: $z-index-modal;
+  outline: 0;
+  overflow: hidden auto;
+
+  // center
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  // allow clicks to pass through for custom click handling to close modal
+  pointer-events: none;
+
+  &--centered {
+    align-items: center;
+  }
+}
+
+.modal-body {
+  position: relative;
+  padding: 20px $size-lg 45px;
+  max-width: 100%;
+
+  @include mobile-only {
+    padding: $size-sm $size-sm $size-xl;
+  }
+}
+
+.modal-content {
+  position: relative;
+  display: inline-block;
+  width: auto;
+  pointer-events: auto;
+  background-color: #ffffff;
+  outline: 0;
+  box-shadow: 1px 4px 12px 0 rgba(0, 0, 0, 0.3);
+
+  @include mobile-only {
+    width: calc(100vw - 40px);
+  }
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: $z-index-modal-backdrop !important;
+  background-color: rgba(43, 43, 82, 0.24);
+}
