@@ -1,18 +1,19 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Todo } from '../shared/services/todo';
+import { Todo, TodoService } from '../shared/services/todo';
 
 @Component({
   selector: 'app-todo-item',
   templateUrl: './todo-item.component.html',
-  styleUrls: ['./todo-item.component.scss']
+  styleUrls: ['./todo-item.component.scss'],
 })
-export class TodoItemComponent implements OnInit {
+export class TodoItemComponent {
 
   @Input() data: Todo;
 
-  constructor() { }
+  constructor(private todoService: TodoService) { }
 
-  ngOnInit(): void {
+  updateComplete() {
+    this.todoService.update(this.data).subscribe();
   }
 
 }
