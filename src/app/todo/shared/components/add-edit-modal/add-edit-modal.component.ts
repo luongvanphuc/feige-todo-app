@@ -20,6 +20,7 @@ export class AddEditModalComponent implements OnInit {
   };
 
   minDueDate: string;
+  editMode = false;
   submiting = false;
 
   constructor(
@@ -28,9 +29,16 @@ export class AddEditModalComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    // detect edit mode
+    this.editMode = typeof this.model.id === 'number';
+
     const today = new Date();
     this.minDueDate = getYYYYMMDD(today);
-    this.model.dueDate = this.minDueDate;
+
+    // only auto-set dueday when add new
+    if (!this.editMode) {
+      this.model.dueDate = this.minDueDate;
+    }
   }
 
   submit(form: NgForm) {
@@ -41,8 +49,13 @@ export class AddEditModalComponent implements OnInit {
     }
 
     this.submiting = true;
-    this.todoService.create(this.model).subscribe((addedTodo) => {
-      this.modalService.close(addedTodo);
+
+    const method = (this.editMode
+      ? this.todoService.update
+      : this.todoService.create).bind(this.todoService);
+
+    method(this.model).subscribe((todo: Todo) => {
+      this.modalService.close(todo);
     });
   }
 

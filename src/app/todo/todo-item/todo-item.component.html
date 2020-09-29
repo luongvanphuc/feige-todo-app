@@ -6,7 +6,12 @@
       <span class="duedate font-h5">{{ data.dueDate }}</span>
     </span>
   </label>
-  <a class="btn-delete" (click)="openDeleteModal()">
-    <img src="/assets/images/icons/trashbin.svg" width="18px">
-  </a>
+  <div class="flexbox">
+    <a class="btn-action m-r-xxs" (click)="openEditModal()">
+      <img src="/assets/images/icons/edit.svg" width="16px">
+    </a>
+    <a class="btn-action" (click)="openDeleteModal()">
+      <img src="/assets/images/icons/trashbin.svg" width="17px">
+    </a>
+  </div>
 </div>

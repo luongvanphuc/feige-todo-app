@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { StorageKey } from '@shared/constants/common.constant';
 
 import { LocalStorage, ModalService } from '@shared/services';
+import { AddEditModalComponent } from '../shared/components/add-edit-modal';
 import { DeleteModalComponent } from '../shared/components/delete-modal';
 import { Todo, TodoService } from '../shared/services/todo';
 
@@ -35,10 +36,19 @@ export class TodoItemComponent {
       this.deleted.emit();
     } else {
       // open a modal to confirm
-      this.modalService.open(DeleteModalComponent, null, { id: this.data.id }).result.then(() => {
-        this.deleted.emit();
-      });
+      this.modalService.open(DeleteModalComponent, null, { id: this.data.id })
+        .result.then(() => {
+          this.deleted.emit();
+        });
     }
   }
 
+  openEditModal() {
+    this.modalService.open(AddEditModalComponent, null, { model: this.data })
+      .result.then((editedTodo: Todo) => {
+        // map edited data
+        this.data.title = editedTodo.title;
+        this.data.dueDate = editedTodo.dueDate;
+      });
+  }
 }
