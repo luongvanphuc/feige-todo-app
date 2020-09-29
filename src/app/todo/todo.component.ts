@@ -24,7 +24,9 @@ export class TodoComponent implements OnInit {
 
   openAddModal() {
     this.modalService.open(AddModalComponent).result.then((addedTodo) => {
-      this.todos.push(addedTodo);
+      if (addedTodo) {
+        this.todos.push(addedTodo);
+      }
     });
   }
 }

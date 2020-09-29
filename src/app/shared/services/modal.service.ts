@@ -94,6 +94,13 @@ export class ModalService {
   }
 
   close(resolvedData?: any): void {
+    // resolve the data if any
+    this.activeModalData.resolver(resolvedData);
+
+    this.dismiss();
+  }
+
+  dismiss(): void {
     if (!this.activeModalData) {
       return;
     }
@@ -106,9 +113,6 @@ export class ModalService {
 
     // remove the body class
     this.renderer2.removeClass(this.document.body, this.modalOpenClass);
-
-    // resolve the data if any
-    this.activeModalData.resolver(resolvedData);
 
     // remove and replace the active modal data
     this.modalDatas.pop();

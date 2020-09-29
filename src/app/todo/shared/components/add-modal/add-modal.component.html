@@ -1,7 +1,7 @@
 <div class="modal-body">
   <form (ngSubmit)="submit(form)" #form="ngForm">
     <div class="add-body">
-      <label class="form-label required">
+      <label class="form-label">
         Title <i class="asterisk"></i>
         <input class="form-input" type="text" name="title" [(ngModel)]="model.title" required maxlength="100">
       </label>
@@ -12,6 +12,11 @@
           <span class="font-h5 text-sub">{{ model.content?.length }}/255</span>
         </div>
         <textarea class="form-input" rows="4" name="content" [(ngModel)]="model.content" maxlength="255"></textarea>
+      </label>
+
+      <label class="form-label">
+        Due date
+        <input class="form-input" type="date" name="dueDate" [attr.min]="minDueDate" [(ngModel)]="model.dueDate">
       </label>
     </div>
     <div class="flex-center">

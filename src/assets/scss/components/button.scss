@@ -67,5 +67,7 @@
     background: url("/assets/images/icons/spinner-white.svg") no-repeat right/contain;
     animation: spin 2s infinite linear;
     position: absolute;
+    top: calc(50% - 10px);
+    left: calc(50% - 10px);
   }
 }
