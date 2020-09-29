@@ -13,12 +13,13 @@
 }
 
 .today-widget {
-  padding: 25px var(--side-pad);
+  padding: 35px var(--side-pad);
   border-bottom: 1px solid $color-border;
 }
 
 .todo-list {
   min-height: 150px;
+  background-color: #ffffff;
 }
 
 .todo-item {
@@ -32,6 +33,7 @@
   transform: translateY(-50%);
   font-size: 32px;
   font-weight: 300;
+  box-shadow: 0px 0px 10px 0px #ffb8b9;
 }
 
 .btn-empty-add {
