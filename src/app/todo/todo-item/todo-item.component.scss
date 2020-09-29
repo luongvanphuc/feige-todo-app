@@ -37,6 +37,7 @@
   transition: $transition-all;
   opacity: 0;
   visibility: hidden;
+  user-select: none;
 
   &:hover {
     background-color: #e0e0e0;

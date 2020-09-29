@@ -9,7 +9,7 @@ import { Todo, TodoService } from './shared/services/todo';
   styleUrls: ['./todo.component.scss']
 })
 export class TodoComponent implements OnInit {
-  todos: Array<Todo> = [];
+  todos: Array<Todo>;
 
   constructor(
     private todoService: TodoService,
@@ -18,14 +18,14 @@ export class TodoComponent implements OnInit {
 
   ngOnInit(): void {
     this.todoService.getAll().subscribe((data) => {
-      this.todos = data;
+      this.todos = data || [];
     });
   }
 
   openAddModal() {
     this.modalService.open(AddEditModalComponent).result.then((addedTodo) => {
       if (addedTodo) {
-        this.todos.unshift(addedTodo);
+        this.todos?.unshift(addedTodo);
       }
     });
   }

@@ -9,11 +9,15 @@
     <!-- Add button -->
     <button class="btn-add btn btn--icon btn--red" (click)="openAddModal()">+</button>
 
-    <app-todo-item class="todo-item"
-      *ngFor="let todo of todos"
-      [data]="todo"
-      (deleted)="removeItem(todo)"
-    >
-    </app-todo-item>
+    <ng-container *ngIf="todos?.length">
+      <app-todo-item class="todo-item"
+        *ngFor="let todo of todos"
+        [data]="todo"
+        (deleted)="removeItem(todo)"
+      ></app-todo-item>
+    </ng-container>
+
+    <!-- Empty case -->
+    <button class="btn btn-empty-add" (click)="openAddModal()" *ngIf="todos?.length === 0">+ Add New</button>
   </div>
 </div>

@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component } from '@angular/core';
+import { StorageKey } from '@shared/constants/common.constant';
 
-import { ModalService } from '@shared/services';
-import { Todo, TodoService } from '../../services/todo';
+import { LocalStorage, ModalService } from '@shared/services';
+import { TodoService } from '../../services/todo';
 
 @Component({
   selector: 'app-delete-modal',
@@ -17,10 +17,16 @@ export class DeleteModalComponent {
 
   constructor(
     private modalService: ModalService,
+    private localStorage: LocalStorage,
     private todoService: TodoService,
-  ) { }
+  ) {
+  }
 
   submit() {
+    if (this.stopAsking) {
+      this.localStorage.setItem(StorageKey.NO_DELETE_CONFIRM, true);
+    }
+
     this.isDeleting = true;
     this.todoService.delete(this.id).subscribe(() => {
       this.isDeleting = false;
