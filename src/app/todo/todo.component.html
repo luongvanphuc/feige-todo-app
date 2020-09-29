@@ -5,7 +5,10 @@
   ></app-today-widget>
 
   <!-- Todo list -->
-  <div class="todo-list">
+  <div class="todo-list pos-r p-t-lg">
+    <!-- Add button -->
+    <button class="btn-add btn btn--icon btn--red" (click)="openAddModal()">+</button>
+
     <app-todo-item class="todo-item"
       *ngFor="let todo of todos"
       [data]="todo"

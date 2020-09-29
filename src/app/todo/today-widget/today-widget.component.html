@@ -2,7 +2,7 @@
   <span class="date highlight">
     <strong>{{ dayLabel }}</strong>, {{ date }}
   </span>
-  <span class="text-sub font-h4">
+  <span class="text-sub font-h4" *ngIf="taskCount">
     <strong>{{ taskCount }}</strong>
     {{ taskCount | pluralize: 'task' }}
   </span>

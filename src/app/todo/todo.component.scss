@@ -24,3 +24,13 @@
 .todo-item {
   padding: 5px var(--side-pad);
 }
+
+.btn-add {
+  position: absolute;
+  top: 0;
+  right: var(--side-pad);
+  transform: translateY(-50%);
+  font-size: 32px;
+  font-weight: 300;
+
+}

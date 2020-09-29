@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Pipes } from './pipes';
 import { Services } from './services';
 import { Components } from './components';
+import { Directives } from './directives';
 
 @NgModule({
   imports: [
@@ -11,6 +12,7 @@ import { Components } from './components';
   declarations: [
     ...Components,
     ...Pipes,
+    ...Directives,
   ],
   providers: [
     ...Services,
@@ -19,6 +21,7 @@ import { Components } from './components';
     CommonModule,
     ...Components,
     ...Pipes,
+    ...Directives,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

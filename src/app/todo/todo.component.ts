@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalService } from '@shared/services';
+import { AddModalComponent } from './shared/components/add-modal';
 import { Todo, TodoService } from './shared/services/todo';
 
 @Component({
@@ -9,11 +11,18 @@ import { Todo, TodoService } from './shared/services/todo';
 export class TodoComponent implements OnInit {
   todos: Array<Todo>;
 
-  constructor(private todoService: TodoService) { }
+  constructor(
+    private todoService: TodoService,
+    private modalService: ModalService,
+  ) { }
 
   ngOnInit(): void {
     this.todoService.getAll().subscribe((data) => {
       this.todos = data;
     });
+  }
+
+  openAddModal() {
+    this.modalService.open(AddModalComponent);
   }
 }
