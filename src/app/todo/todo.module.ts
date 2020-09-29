@@ -21,6 +21,6 @@ import { DeleteModalComponent } from './shared/components/delete-modal';
   ],
   providers: [
     TodoService,
-  ]
+  ],
 })
 export class TodoModule { }

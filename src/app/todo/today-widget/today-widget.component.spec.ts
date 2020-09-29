@@ -8,9 +8,9 @@ describe('TodayWidgetComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TodayWidgetComponent ]
+      declarations: [TodayWidgetComponent],
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

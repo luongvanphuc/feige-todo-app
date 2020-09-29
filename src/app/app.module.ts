@@ -14,6 +14,6 @@ import { SharedModule } from '@shared/shared.module';
     TodoModule,
   ],
   providers: [],
-  bootstrap: [TodoComponent]
+  bootstrap: [TodoComponent],
 })
 export class AppModule { }

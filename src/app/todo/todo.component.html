@@ -16,7 +16,7 @@
     </ng-container>
 
     <!-- Loading spinner -->
-    <div [njAsyncLoadingDiv]="isLoadingData"></div>
+    <div [appAsyncLoadingDiv]="isLoadingData"></div>
 
     <!-- Empty case -->
     <button class="btn btn-empty-add" (click)="openAddModal()" *ngIf="todos?.length === 0">+ Add New</button>
