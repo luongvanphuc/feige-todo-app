@@ -1,17 +1,20 @@
 @import 'settings/index';
+@import 'tools/index';
 
 :host {
   display: block;
   border-left: 3px solid transparent;
   transition: $transition-all;
 
-  &:hover {
-    border-color: $color-theme;
-    background-color: #f5f5f5;
+  @include desktop-only {
+    &:hover {
+      border-color: $color-theme;
+      background-color: #f5f5f5;
 
-    .btn-action {
-      opacity: 1;
-      visibility: visible;
+      .btn-action {
+        opacity: 1;
+        visibility: visible;
+      }
     }
   }
 }

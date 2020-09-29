@@ -6,7 +6,14 @@
       <span class="duedate font-h5">{{ data.dueDate }}</span>
     </span>
   </label>
-  <div class="flexbox">
+
+  <!-- Mobile button -->
+  <!-- TODO: start here -->
+  <a class="btn-more desk-hide">
+    <img src="/assets/images/icons/next.svg" width="16px">
+  </a>
+
+  <div class="flexbox mobi-hide tabl-hide">
     <a class="btn-action m-r-xxs" (click)="openEditModal()">
       <img src="/assets/images/icons/edit.svg" width="16px">
     </a>
