@@ -1,10 +1,12 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { StorageKey } from '@shared/constants/common.constant';
 
 import { LocalStorage, ModalService } from '@shared/services';
 import { AddEditModalComponent } from '../shared/components/add-edit-modal';
 import { DeleteModalComponent } from '../shared/components/delete-modal';
 import { Todo, TodoService } from '../shared/services/todo';
+import * as TodoListActions from '../shared/store/todo-list.actions';
 
 @Component({
   selector: 'app-todo-item',
@@ -14,7 +16,6 @@ import { Todo, TodoService } from '../shared/services/todo';
 export class TodoItemComponent {
 
   @Input() data: Todo;
-  @Output() deleted = new EventEmitter<void>();
 
   // for mobile device
   toggledActionPanel = false;
@@ -23,6 +24,7 @@ export class TodoItemComponent {
     private modalService: ModalService,
     private localStorage: LocalStorage,
     private todoService: TodoService,
+    private store: Store<{ todoList: { todos: Array<Todo> } }>,
   ) { }
 
   updateComplete() {
@@ -36,22 +38,15 @@ export class TodoItemComponent {
     if (stopAsking) {
       // delete immediately
       this.todoService.delete(this.data.id).subscribe();
-      this.deleted.emit();
+      this.store.dispatch(new TodoListActions.DeleteTodo(this.data.id));
     } else {
       // open a modal to confirm
-      this.modalService.open(DeleteModalComponent, null, { id: this.data.id })
-        .result.then(() => {
-          this.deleted.emit();
-        });
+      this.modalService.open(DeleteModalComponent, null, { id: this.data.id });
     }
   }
 
   openEditModal() {
-    this.modalService.open(AddEditModalComponent, null, { model: this.data })
-      .result.then((editedTodo: Todo) => {
-        // map edited data
-        this.data.title = editedTodo.title;
-        this.data.dueDate = editedTodo.dueDate;
-      });
+    // shallow copy the model
+    this.modalService.open(AddEditModalComponent, null, { model: { ...this.data } });
   }
 }

@@ -15,7 +15,7 @@ export class TodoService {
   }
 
   getAll(): Observable<Array<Todo>> {
-    return this.http.get<Array<Todo>>(this.resourceUrl);
+    return this.http.get<Array<Todo>>(this.resourceUrl + '?_sort=id&_order=desc');
   }
 
   create(todo: Todo): Observable<Todo> {

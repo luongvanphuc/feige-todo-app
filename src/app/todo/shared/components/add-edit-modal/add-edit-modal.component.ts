@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Store } from '@ngrx/store';
 
 import { ModalService } from '@shared/services';
 import { Todo, TodoService } from '../../services/todo';
 import { validateFormControls } from '@shared/helpers/forms';
 import { getYYYYMMDD } from '@shared/helpers/datetime';
+import * as TodoListActions from '../../store/todo-list.actions';
 
 @Component({
   selector: 'app-add-edit-modal',
@@ -26,6 +28,7 @@ export class AddEditModalComponent implements OnInit {
   constructor(
     private modalService: ModalService,
     private todoService: TodoService,
+    private store: Store<{ todoList: { todos: Array<Todo> } }>,
   ) { }
 
   ngOnInit(): void {
@@ -55,7 +58,10 @@ export class AddEditModalComponent implements OnInit {
       : this.todoService.create).bind(this.todoService);
 
     method(this.model).subscribe((todo: Todo) => {
-      this.modalService.close(todo);
+      this.store.dispatch(this.editMode
+        ? new TodoListActions.UpdateTodo(todo)
+        : new TodoListActions.CreateTodo(todo));
+      this.modalService.close();
     });
   }
 

@@ -1,37 +1,47 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
+
 import { ModalService } from '@shared/services';
 import { AddEditModalComponent } from './shared/components/add-edit-modal';
 import { Todo, TodoService } from './shared/services/todo';
+import * as TodoListActions from './shared/store/todo-list.actions';
 
 @Component({
   selector: 'app-todo',
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.scss'],
 })
-export class TodoComponent implements OnInit {
+export class TodoComponent implements OnInit, OnDestroy {
   todos: Array<Todo>;
   isLoadingData = false;
+
+  private todoListSub: Subscription;
 
   constructor(
     private todoService: TodoService,
     private modalService: ModalService,
+    private store: Store<{ todoList: { todos: Array<Todo> } }>,
   ) { }
 
   ngOnInit(): void {
     this.isLoadingData = true;
-    this.todoService.getAll().subscribe((data) => {
-      this.todos = data || [];
-      this.todos.reverse();
+    this.todoService.getAll().subscribe((data = []) => {
       this.isLoadingData = false;
+      this.store.dispatch(new TodoListActions.GetAllTodos(data));
+    });
+
+    this.todoListSub = this.store.select('todoList').subscribe(({ todos }) => {
+      this.todos = todos;
     });
   }
 
+  ngOnDestroy(): void {
+    this.todoListSub?.unsubscribe();
+  }
+
   openAddModal() {
-    this.modalService.open(AddEditModalComponent).result.then((addedTodo) => {
-      if (addedTodo) {
-        this.todos?.unshift(addedTodo);
-      }
-    });
+    this.modalService.open(AddEditModalComponent);
   }
 
   removeItem(todo: Todo) {
