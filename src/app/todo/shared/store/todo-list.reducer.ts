@@ -1,9 +1,11 @@
 import { Todo } from '../services/todo';
 import * as TodoActions from './todo-list.actions';
 
-const initialState: {
-  todos: Array<Todo>,
-} = {
+export interface TodoListState {
+  todos: Array<Todo>;
+}
+
+const initialState: TodoListState = {
   todos: null,
 };
 

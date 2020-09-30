@@ -3,8 +3,9 @@ import { Store } from '@ngrx/store';
 import { StorageKey } from '@shared/constants/common.constant';
 
 import { LocalStorage, ModalService } from '@shared/services';
-import { Todo, TodoService } from '../../services/todo';
+import { TodoService } from '../../services/todo';
 import * as TodoListActions from '../../store/todo-list.actions';
+import { TodoListState } from '../../store/todo-list.reducer';
 
 @Component({
   selector: 'app-delete-modal',
@@ -21,7 +22,7 @@ export class DeleteModalComponent {
     private modalService: ModalService,
     private localStorage: LocalStorage,
     private todoService: TodoService,
-    private store: Store<{ todoList: { todos: Array<Todo> } }>,
+    private store: Store<{ todoList: TodoListState }>,
   ) {
   }
 

@@ -1,9 +1,9 @@
 <div class="flex-center-between pos-r">
   <label class="checkbox overflow-hidden">
-    <input type="checkbox" name="complete" [(ngModel)]="data.complete" (ngModelChange)="updateComplete()">
-    <span class="text overflow-ellipsis" [class.complete]="data.complete">
-      <strong>{{ data.title }}</strong><br>
-      <span class="duedate font-h5">{{ data.dueDate }}</span>
+    <input type="checkbox" name="complete" [(ngModel)]="model.complete" (ngModelChange)="updateComplete()">
+    <span class="text overflow-ellipsis" [class.complete]="model.complete">
+      <strong>{{ model.title }}</strong><br>
+      <span class="duedate font-h5">{{ model.dueDate }}</span>
     </span>
   </label>
 

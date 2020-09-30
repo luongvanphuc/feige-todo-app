@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { StorageKey } from '@shared/constants/common.constant';
 
@@ -7,15 +7,18 @@ import { AddEditModalComponent } from '../shared/components/add-edit-modal';
 import { DeleteModalComponent } from '../shared/components/delete-modal';
 import { Todo, TodoService } from '../shared/services/todo';
 import * as TodoListActions from '../shared/store/todo-list.actions';
+import { TodoListState } from '../shared/store/todo-list.reducer';
 
 @Component({
   selector: 'app-todo-item',
   templateUrl: './todo-item.component.html',
   styleUrls: ['./todo-item.component.scss'],
 })
-export class TodoItemComponent {
+export class TodoItemComponent implements OnInit {
 
   @Input() data: Todo;
+
+  model: Todo;
 
   // for mobile device
   toggledActionPanel = false;
@@ -24,11 +27,17 @@ export class TodoItemComponent {
     private modalService: ModalService,
     private localStorage: LocalStorage,
     private todoService: TodoService,
-    private store: Store<{ todoList: { todos: Array<Todo> } }>,
+    private store: Store<{ todoList: TodoListState }>,
   ) { }
 
+  ngOnInit(): void {
+    // shallow copy the data
+    this.model = { ...this.data };
+  }
+
   updateComplete() {
-    this.todoService.update(this.data).subscribe();
+    this.todoService.update(this.model).subscribe();
+    this.store.dispatch(new TodoListActions.UpdateTodo(this.model));
   }
 
   openDeleteModal() {

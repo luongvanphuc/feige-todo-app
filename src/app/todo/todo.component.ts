@@ -6,6 +6,7 @@ import { ModalService } from '@shared/services';
 import { AddEditModalComponent } from './shared/components/add-edit-modal';
 import { Todo, TodoService } from './shared/services/todo';
 import * as TodoListActions from './shared/store/todo-list.actions';
+import { TodoListState } from './shared/store/todo-list.reducer';
 
 @Component({
   selector: 'app-todo',
@@ -21,7 +22,7 @@ export class TodoComponent implements OnInit, OnDestroy {
   constructor(
     private todoService: TodoService,
     private modalService: ModalService,
-    private store: Store<{ todoList: { todos: Array<Todo> } }>,
+    private store: Store<{ todoList: TodoListState }>,
   ) { }
 
   ngOnInit(): void {

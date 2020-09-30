@@ -7,6 +7,7 @@ import { Todo, TodoService } from '../../services/todo';
 import { validateFormControls } from '@shared/helpers/forms';
 import { getYYYYMMDD } from '@shared/helpers/datetime';
 import * as TodoListActions from '../../store/todo-list.actions';
+import { TodoListState } from '../../store/todo-list.reducer';
 
 @Component({
   selector: 'app-add-edit-modal',
@@ -28,7 +29,7 @@ export class AddEditModalComponent implements OnInit {
   constructor(
     private modalService: ModalService,
     private todoService: TodoService,
-    private store: Store<{ todoList: { todos: Array<Todo> } }>,
+    private store: Store<{ todoList: TodoListState }>,
   ) { }
 
   ngOnInit(): void {
