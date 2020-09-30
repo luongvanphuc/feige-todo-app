@@ -203,7 +203,7 @@ export class ModalService {
     // click the backdrop to close modal
     if (configs.clickOutsideToClose) {
       this.renderer2.listen(backdropElement, 'click', () => {
-        this.close();
+        this.dismiss();
       });
     }
   }

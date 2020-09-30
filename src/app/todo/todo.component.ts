@@ -21,6 +21,7 @@ export class TodoComponent implements OnInit {
     this.isLoadingData = true;
     this.todoService.getAll().subscribe((data) => {
       this.todos = data || [];
+      this.todos.reverse();
       this.isLoadingData = false;
     });
   }
