@@ -1,4 +1,4 @@
-<div class="flex-center-between">
+<div class="flex-center-between pos-r">
   <label class="checkbox overflow-hidden">
     <input type="checkbox" name="complete" [(ngModel)]="data.complete" (ngModelChange)="updateComplete()">
     <span class="text overflow-ellipsis" [class.complete]="data.complete">
@@ -8,17 +8,19 @@
   </label>
 
   <!-- Mobile button -->
-  <!-- TODO: start here -->
-  <a class="btn-more desk-hide">
-    <img src="/assets/images/icons/next.svg" width="16px">
+  <a class="btn-more desk-hide" [class.active]="toggledActionPanel" (click)="toggledActionPanel = !toggledActionPanel">
+    <img src="/assets/images/icons/next.svg" width="14px">
   </a>
 
-  <div class="flexbox mobi-hide tabl-hide">
+  <div class="action-panel flexbox" [class.active]="toggledActionPanel">
     <a class="btn-action m-r-xxs" (click)="openEditModal()">
       <img src="/assets/images/icons/edit.svg" width="16px">
+      <span class="m-l-xs">Edit</span>
     </a>
     <a class="btn-action" (click)="openDeleteModal()">
       <img src="/assets/images/icons/trashbin.svg" width="17px">
+      <span class="m-l-xs">Delete</span>
     </a>
   </div>
 </div>
+<div class="fake-mobile-panel desk-hide" [class.active]="toggledActionPanel"></div>

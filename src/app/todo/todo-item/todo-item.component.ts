@@ -16,6 +16,9 @@ export class TodoItemComponent {
   @Input() data: Todo;
   @Output() deleted = new EventEmitter<void>();
 
+  // for mobile device
+  toggledActionPanel = false;
+
   constructor(
     private modalService: ModalService,
     private localStorage: LocalStorage,

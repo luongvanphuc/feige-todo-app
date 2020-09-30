@@ -5,6 +5,7 @@
   display: block;
   border-left: 3px solid transparent;
   transition: $transition-all;
+  overflow: hidden;
 
   @include desktop-only {
     &:hover {
@@ -33,16 +34,63 @@
 }
 
 .btn-action {
-  font-size: 0;
+  line-height: 0;
   padding: 8px;
   cursor: pointer;
   border-radius: 50%;
   transition: $transition-all;
+
+  @include desktop-only {
+    opacity: 0;
+    visibility: hidden;
+    user-select: none;
+
+    &:hover {
+      background-color: #e0e0e0;
+    }
+  }
+
+  @include tablet-down {
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
+.btn-more {
+  font-size: 0;
+  padding: 8px;
+  transition: transform 0.2s ease;
+
+  &.active {
+    transform: rotate(90deg);
+  }
+}
+
+.action-panel {
+  @include tablet-down {
+    position: absolute;
+    top: calc(100% + 7px);
+    right: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+
+    &.active {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+
+.fake-mobile-panel {
+  height: 0;
   opacity: 0;
   visibility: hidden;
-  user-select: none;
+  transition: $transition-all;
 
-  &:hover {
-    background-color: #e0e0e0;
+  &.active {
+    height: 40px;
+    opacity: 1;
+    visibility: visible;
   }
 }
